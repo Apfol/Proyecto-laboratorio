@@ -1,0 +1,105 @@
+<%-- 
+    Document   : registro
+    Created on : Oct 30, 2017, 6:33:47 PM
+    Author     : Andres Ramos
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% String usuario = request.getParameter("usuario");%>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% if (usuario.equals("medico")) { %>
+        <title>Registro médico</title>
+        <% } else {%>
+        <title>Registro <%= usuario%></title>
+        <% } %>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+
+
+        <link rel="stylesheet" href="css/bootstrap-grid.css" type="text/css"/>
+
+    </head>
+
+    <body class="bg-light">
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.jsp">Navbar</a>
+        </nav>
+        <br><br>
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col align-self-center">
+                    <% if (usuario.equals("medico")) { %>
+                    <h1>Registro médico</h1>
+                    <% } else {%>
+                    <h1>Registro <%= usuario%></h1>
+                    <% }%>
+                    <br>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombres">Nombres</label>
+                                <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="apellidos">Apellidos</label>
+                                <input type="password" class="form-control" id="apellidos" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="correo">Correo</label>
+                                <input type="email" class="form-control" id="correo" placeholder="Correo">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contraseña">Contraseña</label>
+                                <input type="password" class="form-control" id="contraseña" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="ciudad">Ciudad</label>
+                                <select id="ciudad" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>Colombia</option>
+                                    <option>Argentina</option>
+                                    <option>Panamá</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="telefono">Teléfono</label>
+                                <input type="number" class="form-control" id="telefono" placeholder="Teléfono">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="genero">Genéro</label>
+                                <select id="genero" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>Masculino</option>
+                                    <option>Femenino</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+
+</html>
+
