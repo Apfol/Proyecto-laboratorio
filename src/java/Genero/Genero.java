@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ciudad;
+package Genero;
 
 /**
  *
  * @author Andres Ramos
  */
-public class Ciudad {
+public class Genero {
     
     private int id;
-    private String ciudad;
+    private String genero;
+    
 
-    public Ciudad(int id, String ciudad) {
+    public Genero(int id, String genero) {
         this.id = id;
-        this.ciudad = ciudad;
+        this.genero = genero;
     }
 
-    public Ciudad(String ciudad) {
-        this.ciudad = ciudad;
+    public Genero(String genero) {
+        this.genero = genero;
     }
 
     public int getId() {
@@ -31,12 +32,13 @@ public class Ciudad {
         this.id = id;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
+    
     
 }

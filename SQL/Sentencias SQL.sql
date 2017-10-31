@@ -6,7 +6,12 @@ create table paciente(
     nombres varchar(100) not null,
     apellidos varchar(100) not null,
     direccion varchar(100) not null,
-    id_ciudad int(11) not null
+    usuario varchar(100) not null,
+    contraseña varchar(100) not null,
+    telefono bigint(10) not null,
+    identificacion bigint(10) not null,
+    id_ciudad int(11) not null,
+    id_genero int(11) not null
 );
 
 create table ciudad(
@@ -24,7 +29,14 @@ create table remision(
 create table medico(
     id_medico int(11) primary key auto_increment,
     nombres varchar(100) not null,
-    apellidos varchar(100) not null
+    apellidos varchar(100) not null,
+    usuario varchar(100) not null,
+    contraseña varchar(100) not null,
+    telefono bigint(10) not null,
+    identificacion bigint(10) not null,
+    registros int(11) not null,
+    id_ciudad int(11) not null,
+    id_genero int(11) not null
 );
 
 create table remision_examen(
@@ -42,7 +54,13 @@ create table examen(
 create table bacteriologa(
     id_bacteriologa int(11) primary key auto_increment,
     nombres varchar(100) not null,
-    apellidos varchar(100) not null
+    apellidos varchar(100) not null,
+    usuario varchar(100) not null,
+    contraseña varchar(100) not null,
+    telefono bigint(10) not null,
+    identificacion bigint(10) not null,
+    id_ciudad int(11) not null,
+    id_genero int(11) not null
 );
 
 create table laboratorio(
@@ -66,6 +84,11 @@ create table resultado(
     id_parametro int(11) not null
 );
 
+create table genero(
+    id_genero int(11) primary key auto_increment, 
+    tipoGenero varchar(100) not null
+);
+
 --Relación llaves foráneas;
 alter table paciente add constraint paciente_ciudad foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
 alter table remision add constraint remision_paciente foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
@@ -75,13 +98,16 @@ alter table remision_examen add constraint examen_remision foreign key(id_examen
 alter table parametro add constraint parametro_examen foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
 alter table resultado add constraint resultado_paciente foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
 alter table resultado add constraint resultado_parametro foreign key(id_parametro) references parametro(id_parametro) ON DELETE CASCADE;
+alter table medico add constraint medico_ciudad foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
+alter table medico add constraint medico_genero foreign key(id_genero) references genero(id_genero) ON DELETE CASCADE;
 
-Bacteriologa
+--Bacteriologa;
 
 insert into bacteriologa(nombres, apellidos) values ('Camila', 'Garzón Calle');
 insert into bacteriologa(nombres, apellidos) values ('Andrea ', 'Cruz Ávila');
 
-Ciudad
+--Ciudad;
+
 insert into ciudad (nombre) values ('Leticia');
 insert into ciudad (nombre) values ('Medellín');
 insert into ciudad (nombre) values ('Arauca');
@@ -115,7 +141,7 @@ insert into ciudad (nombre) values ('Calí');
 insert into ciudad (nombre) values ('Mitú');
 insert into ciudad (nombre) values ('Puerto Carreño');
 
-examenes
+--examenes;
 
 insert into examen (nombre, descripcion) values ('Hemograma completo', 'El hemograma consiste en un conteo de los elementos celulares de la sangre como son las células rojas, blancas y plaquetas.');
 insert into examen (nombre, descripcion) values ('Urinálisis', 'Unos cuantos mililitros de este desecho humano, pueden ser la clave para detectar un problema de salud relacionado con el sistema urinario: una infección, diabetes, pobre funcionamiento de los riñones, cálculos o el primer indicio de una malignidad.');
@@ -126,7 +152,7 @@ insert into examen (nombre, descripcion) values ('Perfil Hepático', 'La bilirru
 insert into examen (nombre, descripcion) values ('Perfil Tirodeo', 'Las pruebas de laboratorio para evaluar la función de las glándulas tiroides o para confirmar o excluir el hipertiroidismo son T4 total, T4 libre, T3 y TSH. Para detectar el hipotiroidismo son el T4 total, T4 libre y TSH.');
 insert into examen (nombre, descripcion) values ('Panel básico metabólico', 'Glucosa, electrolitos (sodio, potasio, cloro y dióxido de carbono). El nivel de glucosa puede revelar una de las enfermedades más frecuentes en nuestro país: la diabetes. El tener elevada la “azúcar” en la sangre sin el control adecuado, puede dar inicio a una cadena de otros trastornos fatales a nuestro cuerpo como lo son las enfermedades del corazón y riñones.');
 
-laboratotio
+--laboratotio;
 
 insert into laboratorio (nit, nombre) values ('321.231.873 - 2', 'Laboratorio Genfira');
 insert into laboratorio (nit, nombre) values ('725.231.873 - 2', 'Laboratorio Charles S.A');
@@ -134,7 +160,8 @@ insert into laboratorio (nit, nombre) values ('746.231.873 - 2', 'Laboratorio Me
 insert into laboratorio (nit, nombre) values ('167.231.873 - 2', 'Laboratorio Biológico Salud solar S.A');
 insert into laboratorio (nit, nombre) values ('492.231.873 - 2', 'Laboratorio Médico Militar');
 
-medico
+--medico;
+
 insert into medico (nombres, apellidos) values ('Andrés Camilo', 'Rodriguez Farfán'); 
 insert into medico (nombres, apellidos) values ('Michael', 'Sierra Wern');
 insert into medico (nombres, apellidos) values ('Juana', 'Uribe Merchán');
@@ -142,7 +169,7 @@ insert into medico (nombres, apellidos) values ('Mónica Paola', 'Peña Castillo
 insert into medico (nombres, apellidos) values ('Charles', 'Truman Sang');
 insert into medico (nombres, apellidos) values ('Sergio Andrés', 'Ortega Murcia');
 
-paciente
+--paciente;
 
 insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Cristian', 'Urrutia García', 'Krr 34#52 A-2', 21);
 insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Carmen Isabella', 'Garzón Pineda', 'AV 52#12- 42', 14);
@@ -155,7 +182,7 @@ insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Álvaro
 insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Laura Vanessa', 'Poveda Osorio', 'Krr 21#52 22E', 27);
 insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('María Juliana', 'Cárdenas García', 'Cll 32#84 30Norte', 19);
 
-parametro
+--parametro;
 
 insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (2,'15mg/g','68mg/g', 'Relación proteínas/Creatinina', 'Rango normal de proteínas presentes en la orina de los hombres');
 insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (2,'10mg/g','107mg/g', 'Relación proteínas/Creatinina', 'Rango normal de proteínas presentes en la orina de las mujeres');
@@ -170,7 +197,7 @@ insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcio
 insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (1,'13.5g/dl','17.5g/dl', 'Hemoglobina', 'Rango normal de la hemoglobina en la sangre de los hombres');
 insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (1,'12g/dl','16g/dl', 'Hemoglobina', 'Rango normal de la hemoglobina en la sangre de las mujeres');
 
-remision 
+--remision; 
 
 insert into remision (id_paciente, fecha, id_medico) values (1, '2016-03-02', 1);
 insert into remision (id_paciente, fecha, id_medico) values (2, '2016-08-12', 3);
@@ -183,7 +210,7 @@ insert into remision (id_paciente, fecha, id_medico) values (8, '2017-09-11', 2)
 insert into remision (id_paciente, fecha, id_medico) values (9, '2017-10-01', 4);
 insert into remision (id_paciente, fecha, id_medico) values (10, '2017-12-04',6);
 
-remision_ examen
+--remision_ examen;
 
 insert into remision_examen (id_remision, id_examen) values (1,2);
 insert into remision_examen (id_remision, id_examen) values (2,1);
@@ -196,7 +223,7 @@ insert into remision_examen (id_remision, id_examen) values (8,6);
 insert into remision_examen (id_remision, id_examen) values (9,7);
 insert into remision_examen (id_remision, id_examen) values (10,8);
 
-resultado
+--resultado;
 
 insert into resultado (id_paciente, id_parametro) values (1,1);
 insert into resultado (id_paciente, id_parametro) values (2,11);
@@ -208,3 +235,9 @@ insert into resultado (id_paciente, id_parametro) values (7,11);
 insert into resultado (id_paciente, id_parametro) values (8,6);
 insert into resultado (id_paciente, id_parametro) values (9,9);
 insert into resultado (id_paciente, id_parametro) values (10,10);
+
+--Insert Generos;
+INSERT INTO genero(tipoGenero) VALUES
+	("Masculino"),
+	("Femenino"),
+    ("Otro");

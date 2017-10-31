@@ -4,6 +4,7 @@
     Author     : Andres Ramos
 --%>
 
+<%@page import="Usuario.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@
                             <h4 class="card-title">Médico</h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalDoctor">Incio de sesión</a>
-                            <a href="registro.jsp?usuario=medico" class="card-link">Registro</a>
+                            <a href="registro.jsp?usuario=<%= Usuario.MEDICO%>" class="card-link">Registro</a>
                         </div>
                     </div>
                 </div>
@@ -47,7 +48,7 @@
                             <h4 class="card-title">Bacterióloga</h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalBacteriologist">Incio de sesión</a>
-                            <a href="registro.jsp?usuario=bacteriologa" class="card-link">Registro</a>
+                            <a href="registro.jsp?usuario=<%= Usuario.BACTERIOLOGA%>" class="card-link">Registro</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                             <h4 class="card-title">Paciente</h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalPatient">Incio de sesión</a>
-                            <a href="registro.jsp?usuario=paciente" class="card-link">Registro</a>
+                            <a href="registro.jsp?usuario=<%= Usuario.PACIENTE%>" class="card-link">Registro</a>
                         </div>
                     </div>
                 </div>
@@ -152,8 +153,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
