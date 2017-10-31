@@ -48,7 +48,7 @@
                             <h4 class="card-title">Bacterióloga</h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalBacteriologist">Incio de sesión</a>
-                            <a href="registro.jsp?usuario=<%= Usuario.BACTERIOLOGA%>" class="card-link">Registro</a>
+                            <a href="registro.jsp?usuario=<%= Usuario.BACTERIOLOGO%>" class="card-link">Registro</a>
                         </div>
                     </div>
                 </div>

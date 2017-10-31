@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bacteriologa;
+package Bacteriologo;
 
 /**
  *
  * @author Andres Ramos
  */
-public class Bacteriologa {
+public class Bacteriologo {
     
     private int id;
     private String nombres;
@@ -21,7 +21,7 @@ public class Bacteriologa {
     private int idCiudad;
     private int idGenero;
 
-    public Bacteriologa(int id, String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int idCiudad, int idGenero) {
+    public Bacteriologo(int id, String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int idCiudad, int idGenero) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -33,7 +33,7 @@ public class Bacteriologa {
         this.idGenero = idGenero;
     }
 
-    public Bacteriologa(String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int idCiudad, int idGenero) {
+    public Bacteriologo(String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int idCiudad, int idGenero) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.usuario = usuario;

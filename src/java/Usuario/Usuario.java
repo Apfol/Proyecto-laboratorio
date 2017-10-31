@@ -11,6 +11,6 @@ package Usuario;
  */
 public class Usuario {
     public static final int MEDICO = 0;
-    public static final int BACTERIOLOGA = 1;
+    public static final int BACTERIOLOGO = 1;
     public static final int PACIENTE = 2;
 }

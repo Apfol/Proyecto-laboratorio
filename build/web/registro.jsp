@@ -21,8 +21,8 @@
         case Usuario.MEDICO:
             controlador = "ControladorMedico";
             break;
-        case Usuario.BACTERIOLOGA:
-            controlador = "ControladorBacteriologa";
+        case Usuario.BACTERIOLOGO:
+            controlador = "ControladorBacteriologo";
             break;
         case Usuario.PACIENTE:
             controlador = "ControladorPaciente";
@@ -34,7 +34,7 @@
     <head>
         <% if (usuario == Usuario.MEDICO) { %>
         <title>Registro médico</title>
-        <% } else if (usuario == Usuario.BACTERIOLOGA) {%>
+        <% } else if (usuario == Usuario.BACTERIOLOGO) {%>
         <title>Registro bacterióloga</title>
         <% } else if (usuario == Usuario.PACIENTE) {%>
         <title>Registro paciente</title>
@@ -59,7 +59,7 @@
                 <div class="col align-self-center">
                     <% if (usuario == Usuario.MEDICO) { %>
                     <h1>Registro médico</h1>
-                    <% } else if (usuario == Usuario.BACTERIOLOGA) {%>
+                    <% } else if (usuario == Usuario.BACTERIOLOGO) {%>
                     <h1>Registro bacterióloga</h1>
                     <% } else if (usuario == Usuario.PACIENTE) {%>
                     <h1>Registro paciente</h1>
@@ -119,7 +119,7 @@
                                 <label for="direccion">Dirección casa</label>
                                 <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección casa">
                             </div>
-                            <% } else if (usuario == Usuario.BACTERIOLOGA) { %>
+                            <% } else if (usuario == Usuario.BACTERIOLOGO) { %>
                             <div class="form-group col-md-4">
                                 <label for="telefono">Teléfono</label>
                                 <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Teléfono">

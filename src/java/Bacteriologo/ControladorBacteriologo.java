@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bacteriologa;
+package Bacteriologo;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andres Ramos
  */
-@WebServlet(name = "ControladorBacteriologa", urlPatterns = {"/ControladorBacteriologa"})
-public class ControladorBacteriologa extends HttpServlet {
+@WebServlet(name = "ControladorBacteriologo", urlPatterns = {"/ControladorBacteriologo"})
+public class ControladorBacteriologo extends HttpServlet {
     
-    ModeloBacteriologa modeloBacteriologa = new ModeloBacteriologa();
+    ModeloBacteriologo modeloBacteriologa = new ModeloBacteriologo();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,12 +46,11 @@ public class ControladorBacteriologa extends HttpServlet {
             long identificacion = Long.parseLong(request.getParameter("identificacion"));
             int idCiudad = Integer.parseInt(request.getParameter("ciudad"));
             int idGenero = Integer.parseInt(request.getParameter("genero"));
-            
-            Bacteriologa bacteriologa = new Bacteriologa(nombres, apellidos, usuario, contraseña, telefono, identificacion, idCiudad, idGenero);
+            Bacteriologo bacteriologa = new Bacteriologo(nombres, apellidos, usuario, contraseña, telefono, identificacion, idCiudad, idGenero);
             modeloBacteriologa.agregarBacteriologaDB(bacteriologa);
             response.sendRedirect("index.jsp");
         } catch (SQLException ex) {
-            Logger.getLogger(ControladorBacteriologa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorBacteriologo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

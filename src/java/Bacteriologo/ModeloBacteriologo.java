@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Bacteriologa;
+package Bacteriologo;
 
 import Conexion.ConexionDB;
-import Medico.Medico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,9 +14,9 @@ import java.sql.SQLException;
  *
  * @author Andres Ramos
  */
-public class ModeloBacteriologa {
+public class ModeloBacteriologo {
 
-    public void agregarBacteriologaDB(Bacteriologa bacteriologa) throws SQLException {
+    public void agregarBacteriologaDB(Bacteriologo bacteriologa) throws SQLException {
 
         Connection connection;
         PreparedStatement preparedStatement;
