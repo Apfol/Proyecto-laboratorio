@@ -5,6 +5,8 @@
  */
 package Medico;
 
+import Sentencias.SentenciasSQL;
+import com.mallbit.cookies.ControladorCookie;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +57,8 @@ public class ControladorMedico extends HttpServlet {
 
             Medico medico = new Medico(nombres, apellidos, usuario, contraseña, telefono, identificacion, registros, idCiudad, idGenero);
             modeloMedico.agregarMedicoDB(medico);
-            response.sendRedirect("index.jsp");
+            ControladorCookie.crearCookie(SentenciasSQL.obtenerUltimoIdGenerado("medico"), Medico.MEDICO_COOKIE, response);
+            response.sendRedirect("interfaz-medico.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -68,6 +72,7 @@ public class ControladorMedico extends HttpServlet {
             List<Medico> medicos = modeloMedico.obtenerMedicosDB();
             for (Medico medico : medicos) {
                 if (usuario.equals(medico.getUsuario()) && contraseña.equals(medico.getContraseña())) {
+                    ControladorCookie.crearCookie(medico.getId(), Medico.MEDICO_COOKIE, response);
                     response.sendRedirect("interfaz-medico.jsp");
                 }
             }
@@ -75,6 +80,22 @@ public class ControladorMedico extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public Medico obtenerMedicoCookie(List<Medico> medicos, HttpServletRequest request) {
+        Medico medico = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(Medico.MEDICO_COOKIE)) {
+                for (Medico doc : medicos) {
+                    if (doc.getId() == Integer.parseInt(cookie.getValue())) {
+                        medico = doc;
+                        break;
+                    }
+                }
+            }
+        }
+        return medico;
     }
 
 }

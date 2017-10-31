@@ -11,6 +11,8 @@ package Bacteriologo;
  */
 public class Bacteriologo {
     
+    public static final String BACTERIOLOGO_COOKIE = "bacteriologo";
+    
     private int id;
     private String nombres;
     private String apellidos;
