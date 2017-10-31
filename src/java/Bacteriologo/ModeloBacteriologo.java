@@ -6,9 +6,14 @@
 package Bacteriologo;
 
 import Conexion.ConexionDB;
+import Medico.Medico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -41,5 +46,41 @@ public class ModeloBacteriologo {
         preparedStatement.setInt(8, bacteriologa.getIdGenero());
 
         preparedStatement.execute();
+    }
+    
+    public List<Bacteriologo> obtenerBacteriologosDB() throws Exception {
+
+        List<Bacteriologo> bacteriologos = new ArrayList<>();
+
+        Connection connection;
+        Statement statement;
+        ResultSet resultSet;
+
+        //Establecer la conexi�n
+        connection = ConexionDB.conectar();
+
+        //Crear sentencia SQL y statement
+        String sentenciaSQL = "SELECT * FROM bacteriologa";
+        statement = connection.createStatement();
+
+        //Ejecutar SQL y guardar valores de consulta en resultSet
+        resultSet = statement.executeQuery(sentenciaSQL);
+
+        //Recorrer resultador de la sentencia
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id_bacteriologa");
+            String nombres = resultSet.getString("nombres");
+            String apellidos = resultSet.getString("apellidos");
+            long identificacion = resultSet.getLong("identificacion");
+            long telefono = resultSet.getLong("telefono");
+            String usuario = resultSet.getString("usuario");
+            String contraseña = resultSet.getString("contraseña");
+            int idCiudad = resultSet.getInt("id_ciudad");
+            int idGenero = resultSet.getInt("id_genero");
+
+            bacteriologos.add(new Bacteriologo(id, nombres, apellidos, usuario, contraseña, telefono, identificacion, idCiudad, idGenero));
+
+        }
+        return bacteriologos;
     }
 }

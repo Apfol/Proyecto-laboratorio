@@ -8,8 +8,8 @@ package Paciente;
 import Medico.ControladorMedico;
 import Medico.Medico;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -36,6 +36,9 @@ public class ControladorPaciente extends HttpServlet {
             case "insertar":
                 insertarPaciente(request, response);
                 break;
+            case "validar":
+                validarPaciente(request, response);
+                break;
         }
     }
 
@@ -50,11 +53,28 @@ public class ControladorPaciente extends HttpServlet {
             String direccion = request.getParameter("direccion");
             int idCiudad = Integer.parseInt(request.getParameter("ciudad"));
             int idGenero = Integer.parseInt(request.getParameter("genero"));
-            
+
             Paciente paciente = new Paciente(nombres, apellidos, usuario, contraseña, direccion, telefono, identificacion, idCiudad, idGenero);
             modeloPaciente.agregarPacienteDB(paciente);
             response.sendRedirect("index.jsp");
         } catch (SQLException ex) {
+            Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void validarPaciente(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String usuario = request.getParameter("usuario");
+            String contraseña = request.getParameter("password");
+
+            List<Paciente> pacientes = modeloPaciente.obtenerPacientesDB();
+            for (Paciente paciente : pacientes) {
+                if (usuario.equals(paciente.getUsuario()) && contraseña.equals(paciente.getContraseña())) {
+                    response.sendRedirect("interfaz-paciente.jsp");
+                }
+            }
+            response.sendRedirect("index.jsp?login=false");
+        } catch (Exception ex) {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -10,7 +10,7 @@
 <html lang="en">
 
     <head>
-        <title>Registro médico</title>
+        <title>Sistema laboratorio</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <!-- Modal doctor-->
+        <!-- Modal médico-->
         <div class="modal fade" id="modalDoctor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -76,20 +76,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form>
+                    <form action="ControladorMedico" method="post">
+                        <input type="hidden" name="instruccion" value="validar"/>
+                        <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Usuario">
+                                <input type="text" name="usuario" class="form-control" id="formGroupExampleInput" placeholder="Usuario">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
+                                <input type="password" name="password" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Iniciar sesión</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -104,22 +105,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form>
+                    <form action="ControladorBacteriologo" method="post">
+                        <input type="hidden" name="instruccion" value="validar"/>
+                        <div class="modal-body">
                             <div class="form-group">
-                                <label class="col-form-label" for="formGroupExampleInput">Usuario</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                                <input type="text" name="usuario" class="form-control" id="formGroupExampleInput" placeholder="Usuario">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="formGroupExampleInput2">Contraseña</label>
-                                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                                <input type="password" name="password" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -134,22 +134,21 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form>
+                    <form action="ControladorPaciente" method="post">
+                        <input type="hidden" name="instruccion" value="validar"/>
+                        <div class="modal-body">
                             <div class="form-group">
-                                <label class="col-form-label" for="formGroupExampleInput">Usuario</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                                <input type="text" name="usuario" class="form-control" id="formGroupExampleInput" placeholder="Usuario">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="formGroupExampleInput2">Contraseña</label>
-                                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                                <input type="password" name="password" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

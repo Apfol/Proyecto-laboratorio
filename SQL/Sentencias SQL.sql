@@ -171,16 +171,16 @@ insert into medico (nombres, apellidos) values ('Sergio Andrés', 'Ortega Murcia
 
 --paciente;
 
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Cristian', 'Urrutia García', 'Krr 34#52 A-2', 21);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Carmen Isabella', 'Garzón Pineda', 'AV 52#12- 42', 14);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Sandra Elvira', 'Sánchez Moreno', 'Cll 12#37 B-3', 22);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Pedro', 'Perdomo Grisales', 'Krr 43#83 D-21', 2);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Juan David','Gómez Avella', 'Krr 2#32-54', 10);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('María José', 'Santís Celis', 'AV 15-52#2B', 14);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Donald', 'Santos  Maduro', 'Cll 60# 32B sur', 20);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Álvaro', 'Pinilla Rojas ', 'Cll 13#21 53- D', 23);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('Laura Vanessa', 'Poveda Osorio', 'Krr 21#52 22E', 27);
-insert into paciente (nombres, apellidos, direccion, id_ciudad) values ('María Juliana', 'Cárdenas García', 'Cll 32#84 30Norte', 19);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Cristian', 'Urrutia García', 'Krr 34#52 A-2', 'cristianur', 'cristianur', 3214678834, 1086789450, 21, 1);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Carmen Isabella', 'Garzón Pineda', 'AV 52#12- 42', 'carmenis', 'carmenis', 3156854432, 1023426785, 14, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Sandra Elvira', 'Sánchez Moreno', 'Cll 12#37 B-3', 'sandrael', 'sandrael', 3124325672, 1045672914, 22, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Pedro', 'Perdomo Grisales', 'Krr 43#83 D-21', 'pedroper', 'pedroper', 3146273190, 10223256711, 2, 1);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero)) values ('Juan David','Gómez Avella', 'Krr 2#32-54', 'juango', 'juango', 3145266579, 10, 1);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María José', 'Santís Celis', 'AV 15-52#2B', 'mariasa', 'mariasa', 3124325567, 14, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Donald', 'Santos  Maduro', 'Cll 60# 32B sur', 'donaldsa', 'donaldsa', 3124567182, 20, 3);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Álvaro', 'Pinilla Rojas ', 'Cll 13#21 53- D', 'alvaropi', 'alvaropi', 3214567118, 21, 1);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Laura Vanessa', 'Poveda Osorio', 'Krr 21#52 22E', 'laurapo', 'laurapo', 3154278954, 27, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María Juliana', 'Cárdenas García', 'Cll 32#84 30Norte', 'mariaca', 'mariaca', 3145637860, 19, 2);
 
 --parametro;
 

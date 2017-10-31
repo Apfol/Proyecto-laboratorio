@@ -5,8 +5,11 @@
  */
 package Bacteriologo;
 
+import Medico.ControladorMedico;
+import Medico.Medico;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ControladorBacteriologo", urlPatterns = {"/ControladorBacteriologo"})
 public class ControladorBacteriologo extends HttpServlet {
-    
-    ModeloBacteriologo modeloBacteriologa = new ModeloBacteriologo();
+
+    ModeloBacteriologo modeloBacteriologo = new ModeloBacteriologo();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -31,12 +34,15 @@ public class ControladorBacteriologo extends HttpServlet {
 
         switch (instruccion) {
             case "insertar":
-                insertarBacteriologa(request, response);
+                insertarBacteriologo(request, response);
+                break;
+            case "validar":
+                validarBacteriologo(request, response);
                 break;
         }
     }
 
-    private void insertarBacteriologa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void insertarBacteriologo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             String nombres = request.getParameter("nombres");
             String apellidos = request.getParameter("apellidos");
@@ -47,10 +53,27 @@ public class ControladorBacteriologo extends HttpServlet {
             int idCiudad = Integer.parseInt(request.getParameter("ciudad"));
             int idGenero = Integer.parseInt(request.getParameter("genero"));
             Bacteriologo bacteriologa = new Bacteriologo(nombres, apellidos, usuario, contraseña, telefono, identificacion, idCiudad, idGenero);
-            modeloBacteriologa.agregarBacteriologaDB(bacteriologa);
+            modeloBacteriologo.agregarBacteriologaDB(bacteriologa);
             response.sendRedirect("index.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(ControladorBacteriologo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void validarBacteriologo(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String usuario = request.getParameter("usuario");
+            String contraseña = request.getParameter("password");
+
+            List<Bacteriologo> bacteriologos = modeloBacteriologo.obtenerBacteriologosDB();
+            for (Bacteriologo bacteriologo : bacteriologos) {
+                if (usuario.equals(bacteriologo.getUsuario()) && contraseña.equals(bacteriologo.getContraseña())) {
+                    response.sendRedirect("interfaz-bacteriologo.jsp");
+                }
+            }
+            response.sendRedirect("index.jsp?login=false");
+        } catch (Exception ex) {
+            Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

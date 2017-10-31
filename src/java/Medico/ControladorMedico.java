@@ -7,6 +7,7 @@ package Medico;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ControladorMedico", urlPatterns = {"/ControladorMedico"})
 public class ControladorMedico extends HttpServlet {
-    
+
     ModeloMedico modeloMedico = new ModeloMedico();
 
     @Override
@@ -32,6 +33,9 @@ public class ControladorMedico extends HttpServlet {
         switch (instruccion) {
             case "insertar":
                 insertarMedico(request, response);
+                break;
+            case "validar":
+                validarMedico(request, response);
                 break;
         }
     }
@@ -47,11 +51,28 @@ public class ControladorMedico extends HttpServlet {
             int registros = Integer.parseInt(request.getParameter("registros"));
             int idCiudad = Integer.parseInt(request.getParameter("ciudad"));
             int idGenero = Integer.parseInt(request.getParameter("genero"));
-            
+
             Medico medico = new Medico(nombres, apellidos, usuario, contraseña, telefono, identificacion, registros, idCiudad, idGenero);
             modeloMedico.agregarMedicoDB(medico);
             response.sendRedirect("index.jsp");
         } catch (SQLException ex) {
+            Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void validarMedico(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String usuario = request.getParameter("usuario");
+            String contraseña = request.getParameter("password");
+
+            List<Medico> medicos = modeloMedico.obtenerMedicosDB();
+            for (Medico medico : medicos) {
+                if (usuario.equals(medico.getUsuario()) && contraseña.equals(medico.getContraseña())) {
+                    response.sendRedirect("interfaz-medico.jsp");
+                }
+            }
+            response.sendRedirect("index.jsp?login=false");
+        } catch (Exception ex) {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
