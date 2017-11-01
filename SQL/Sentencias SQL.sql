@@ -187,19 +187,31 @@ insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telef
 insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María Juliana', 'Cárdenas García', 'Cll 32#84 30Norte', 'mariaca', 'mariaca', 3145637860, 10247893345, 19, 2);
 
 --parametro;
-
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (2,'15mg/g','68mg/g', 'Relación proteínas/Creatinina', 'Rango normal de proteínas presentes en la orina de los hombres');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (2,'10mg/g','107mg/g', 'Relación proteínas/Creatinina', 'Rango normal de proteínas presentes en la orina de las mujeres');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (3,'ausencia de patogenos','presencia de patogenos', 'Estado de las Heces', 'Las heces normales no deben presentar parásitos ni sangre oculta');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (4,'0.6mg/dl','1.5mg/dl', 'Nivles Nitrógeno de Urea (BUN)', 'Rango Normal de BUN en la sangre en adultos');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (5,'30mg/dl','70mg/dl', 'Lipoproteínas HDL', 'Rango normal de transporte del colesterol hacía el higado en hombres');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (5,'40mg/dl','85mg/dl', 'Lipoproteínas HDL', 'Rango normal de transporte del colesterol hacía el higado en mujeres');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (6,'0.8mg/dl','1.3mg/dl', 'Nivel de blilirrubina', 'Rango normal de Bilirrubina');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (7,'T4 Total T4 Libre','T3 TSH', 'Nivel TSH', 'Rango para detectar hipertiroidismo');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (7,'T4 Total T4 Libre','T4 TSH', 'Nivel TSH', 'Rango para detectar hipotiroidismo');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (8,'80mg/dl','120mg/dl', 'Nivel Glucosa', 'Rango normal de glucosa en la sangre en ayunas');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (1,'13.5g/dl','17.5g/dl', 'Hemoglobina', 'Rango normal de la hemoglobina en la sangre de los hombres');
-insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values (1,'12g/dl','16g/dl', 'Hemoglobina', 'Rango normal de la hemoglobina en la sangre de las mujeres');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (1,'13.5g/dl','17.5g/dl', 'Hemoglobina', 'Rango normal de la hemoglobina en la sangre de los hombres'),
+    (1, '4.50', '6.20', "Globulos rojos", "Celulas Sanguineas mas Importantes."),
+	(1, '0.9', '4.52', "Linfocitos", "Tipos de globulos blancos."),
+	(1, '0.09', '0.45', "Eosinófilos", "Tipos de globulos blancos."),
+	(1, '150', '450', "Plaquetas", "Elementos mas Pequeños de la Sangre."),
+	(1, '88', '100', "VCM", "Volumen Corpuscular Medio.");
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (2,'15mg/g','68mg/g', 'Relación proteínas/Creatinina', 'Rango normal de proteínas presentes en la orina de los hombres'),
+    (2, '0.25','0.50', 'Cetonas (KET)','Compuesto orgánico.'),
+    (2, '2.5', '5.0', 'Glucosa', 'compuesto orgánico más abundante de la naturaleza.');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (3,'ausencia de patogenos','presencia de patogenos', 'Estado de las Heces', 'Las heces normales no deben presentar parásitos ni sangre oculta');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (4,'0.6mg/dl','1.5mg/dl', 'Nivles Nitrógeno de Urea (BUN)', 'Rango Normal de BUN en la sangre en adultos');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (5,'30mg/dl','70mg/dl', 'Lipoproteínas HDL', 'Rango normal de transporte del colesterol hacía el higado en hombres'),
+    (5,'40mg/dl','85mg/dl', 'Lipoproteínas HDL', 'Rango normal de transporte del colesterol hacía el higado en mujeres');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (6,'0.8mg/dl','1.3mg/dl', 'Nivel de blilirrubina', 'Rango normal de Bilirrubina');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (7,'T4 Total T4 Libre','T3 TSH', 'Nivel TSH', 'Rango para detectar hipertiroidismo'),
+    (7,'T4 Total T4 Libre','T4 TSH', 'Nivel TSH', 'Rango para detectar hipotiroidismo');
+insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcion) values 
+    (8,'80mg/dl','120mg/dl', 'Nivel Glucosa', 'Rango normal de glucosa en la sangre en ayunas');
 
 --remision; 
 
@@ -229,16 +241,16 @@ insert into remision_examen (id_remision, id_examen) values (10,8);
 
 --resultado;
 
-insert into resultado (id_paciente, id_parametro) values (1,1);
-insert into resultado (id_paciente, id_parametro) values (2,11);
-insert into resultado (id_paciente, id_parametro) values (3,3);
-insert into resultado (id_paciente, id_parametro) values (4,4);
-insert into resultado (id_paciente, id_parametro) values (5,5);
-insert into resultado (id_paciente, id_parametro) values (6,6);
-insert into resultado (id_paciente, id_parametro) values (7,11);
-insert into resultado (id_paciente, id_parametro) values (8,6);
-insert into resultado (id_paciente, id_parametro) values (9,9);
-insert into resultado (id_paciente, id_parametro) values (10,10);
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (1, 1, 1, '2017-12-04', '14.6');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (2, 2, 11, '2016-05-10', '0.7');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (3, 2, 3, '2014-12-10', '0.9');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (4, 1, 4, '2017-3-14', '0.30');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (5, 2, 5, '2015-4-29', '470');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (6, 1, 6, '2013-03-03', '101');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (7, 1, 11, '2014-08-08', '0.4');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (8, 1, 6, '2012-04-09', '1.3');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (9, 2, 9, '2010-04-20', '4.0');
+insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (10, 2, 10, '1017-03-03', 'Ausencia alta de patógenos');
 
 --Insert Generos;
 INSERT INTO genero(tipoGenero) VALUES

@@ -4,6 +4,8 @@
     Author     : Andres Ramos
 --%>
 
+<%@page import="Bacteriologo.ModeloBacteriologo"%>
+<%@page import="Bacteriologo.Bacteriologo"%>
 <%@page import="Resultado.ModeloResultado"%>
 <%@page import="Resultado.Resultado"%>
 <%@page import="Paciente.ControladorPaciente"%>
@@ -37,6 +39,7 @@
     List<Parametro> parametros = new ModeloParametro().obtenerParametrosDB();
     List<Resultado> resultados = new ModeloResultado().obtenerResultadosDB();
     List<Resultado> resultadosPaciente = new ArrayList<>();
+    List<Bacteriologo> bacteriologos = new ModeloBacteriologo().obtenerBacteriologosDB();
 
     for (Remision remision : remisiones) {
         if (remision.getIdPaciente() == paciente.getId()) {
@@ -98,8 +101,16 @@
                     <div class="card-body">
                         <h4 class="card-title">Examen: <%= examen.getNombre()%></h4>
                         <p class="card-text">
-                            <%= examen.getDescripcion()%>
+
+                            <% for (Medico doc : medicos) { %>
+                            <% if (remision.getIdMedico() == doc.getId()) {%>
+                            Médico : <%= doc.getNombres() + " " + doc.getApellidos()%>
+                            <% } %>
+                            <% }%>
                             <br>
+
+                            <br>
+                            <%= examen.getDescripcion()%>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -108,6 +119,8 @@
                                     <th scope="col">Valor mínimo</th>
                                     <th scope="col">Valor máximo</th>
                                     <th scope="col">Resultado</th>
+                                    <th scope="col">Bacterióloga</th>
+                                    <th scope="col">Fecha realización</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,6 +136,12 @@
                                 <% for (Resultado result : resultadosPaciente) { %>
                                 <% if (result.getIdParametro() == parametro.getId()) {%>
                                 <td><%= result.getValor()%></td>
+                                <% for (Bacteriologo bacteriologo : bacteriologos) { %>
+                                <% if (bacteriologo.getId() == result.getIdBacteriologa()) {%>
+                                <td><%= bacteriologo.getNombres() + " " + bacteriologo.getApellidos()%></td>
+                                <td><%= result.getFechaRealizacion() %></td>
+                                <% } %>
+                                <% } %>
                                 <% } %>
                                 <% } %>
                             </tr>
@@ -141,9 +160,9 @@
 
                 </div>
                 <% } %>
+                <% }%>
                 <% if (sinResultados) { %>
                 <h4 class="text-danger">SIN RESULTADOS</h4>
-                <% } %>
                 <% }%>
             </div>
         </div>

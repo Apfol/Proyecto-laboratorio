@@ -65,7 +65,7 @@
                     <h1>Registro paciente</h1>
                     <% }%>
                     <br>
-                    <form action="<%= controlador%>" method="post">
+                    <form id="formulario-registro-cliente" action="<%= controlador%>" method="post">
                         <input type="hidden" name="instruccion" value="insertar"/>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -143,6 +143,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/validator.js"></script>
     </body>
 
 </html>
