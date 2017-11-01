@@ -19,7 +19,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registro remisión</title>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
@@ -27,13 +27,15 @@
     </head>
     <body>
         <nav class="navbar fixed-top navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Registro remisión</a>
+            <a class="navbar-brand" href="index.jsp">Registro remisión</a>
         </nav>
 
         <br>
         <br>
         <br>
         <div class="container">
+            <h2 class="text-center">LISTADO EXAMENES Y PACIENTES</h2>
+            <br>
             <form action="ControladorRemision" method="post">
                 <input type="hidden" name="instruccion" value="insertar"/>
                 <div class="row">

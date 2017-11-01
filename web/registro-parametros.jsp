@@ -76,13 +76,14 @@
 
 <body class="bg-light">
     <nav class="navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.jsp">Navbar</a>
+        <a class="navbar-brand" href="index.jsp">Sistema gestión de remisiones</a>
     </nav>
     <br><br>
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col align-self-center">
-                <h1>Registro parámetros</h1>
+                <h2 class="text-center">REGISTRO PARÁMETROS</h2>
+                <br>
                 <br>
                 <h4>Nombre paciente: <%= paciente.getNombres() + " " + paciente.getApellidos()%></h4>
                 <h4>Nombre médico: <%= medico.getNombres() + " " + medico.getApellidos()%></h4>
@@ -113,23 +114,23 @@
                                     <% int counterParameter = 1; %>
                                     <% for (Parametro parametro : parametros) { %>
                                     <% if (parametro.getIdExamen() == examen.getId()) {%>
-                                    <input type="hidden" name="parametro<%= counterParameter %>" value="<%= parametro.getId() %>"/>
-                                    <tr>
-                                        <th scope="row"><%= counterParameter%></th>
-                                        <td><%= parametro.getNombre()%></td>
-                                        <td><%= parametro.getValorMinimo()%></td>
-                                        <td><%= parametro.getValorMaximo()%></td>
-                                        <td><input class="form-control mr-sm-2" type="search" name="valor<%= counterParameter %>" placeholder="Ingresar valor" aria-label="Search"></td>
-                                    </tr>
-                                    <% counterParameter++; %>
-                                    <% } %>
-                                    <% }%>
+                                <input type="hidden" name="parametro<%= counterParameter%>" value="<%= parametro.getId()%>"/>
+                                <tr>
+                                    <th scope="row"><%= counterParameter%></th>
+                                    <td><%= parametro.getNombre()%></td>
+                                    <td><%= parametro.getValorMinimo()%></td>
+                                    <td><%= parametro.getValorMaximo()%></td>
+                                    <td><input class="form-control mr-sm-2" type="search" name="valor<%= counterParameter%>" placeholder="Ingresar valor" aria-label="Search"></td>
+                                </tr>
+                                <% counterParameter++; %>
+                                <% } %>
+                                <% }%>
                                 </tbody>
                             </table>
                             </p>
-                            <input type="hidden" name="cantidadParametros" value="<%= counterParameter - 1 %>"/>
-                            <input type="hidden" name="idPaciente" value="<%= paciente.getId() %>"/>
-                            <input type="hidden" name="idRemision" value="<%= remision.getId() %>"/>
+                            <input type="hidden" name="cantidadParametros" value="<%= counterParameter - 1%>"/>
+                            <input type="hidden" name="idPaciente" value="<%= paciente.getId()%>"/>
+                            <input type="hidden" name="idRemision" value="<%= remision.getId()%>"/>
                             <button type="submit" class="btn btn-primary bg-dark">Registrar valores</button>
                         </form>
                     </div>
