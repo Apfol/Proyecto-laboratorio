@@ -23,19 +23,21 @@
 
     <body class="bg-light">
         <nav class="navbar navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Sistema gestión de remisiones</a>
         </nav>
 
         <br>
 
         <div class="container">
+            <h2 class="text-center">USUARIOS DEL SISTEMA</h2>
+            <br>
             <div class="row">
                 <div class="col-sm">
                     <div class="card" style="width: 20rem;">
                         <img class="card-img-top" src="images/doctor.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">Médico</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Ingresa para generar las respectivas remisiones.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalDoctor">Incio de sesión</a>
                             <a href="registro.jsp?usuario=<%= Usuario.MEDICO%>" class="card-link">Registro</a>
                         </div>
@@ -46,7 +48,7 @@
                         <img class="card-img-top" src="images/bacteriologa.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">Bacterióloga</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Ingresa para registrar los valores de los parametros cada de examen de la remisión.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalBacteriologist">Incio de sesión</a>
                             <a href="registro.jsp?usuario=<%= Usuario.BACTERIOLOGO%>" class="card-link">Registro</a>
                         </div>
@@ -57,7 +59,7 @@
                         <img class="card-img-top" src="images/paciente.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">Paciente</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Ingresa para ver los resultados de tus examenes.</p>
                             <a href="#" class="card-link" data-toggle="modal" data-target="#modalPatient">Incio de sesión</a>
                             <a href="registro.jsp?usuario=<%= Usuario.PACIENTE%>" class="card-link">Registro</a>
                         </div>

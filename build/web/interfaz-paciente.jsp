@@ -26,6 +26,7 @@
     ModeloPaciente modeloPaciente = new ModeloPaciente();
     List<Paciente> pacientes = modeloPaciente.obtenerPacientesDB();
     Paciente paciente = new ControladorPaciente().obtenerPacienteCookie(pacientes, request);
+    boolean sinResultados = true;
 
     List<Remision> remisionesPaciente = new ArrayList<>();
     Medico medico = null;
@@ -71,7 +72,7 @@
 
 <body class="bg-light">
     <nav class="navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.jsp">Navbar</a>
+        <a class="navbar-brand" href="index.jsp">Sistema gestión de remisiones</a>
     </nav>
     <br><br>
     <div class="container">
@@ -81,9 +82,12 @@
                 <br>
                 <h4>Nombre paciente: <%= paciente.getNombres() + " " + paciente.getApellidos()%></h4>
                 <br>
+                <h2 class="text-center">REMISIONES</h2>
+                <br>
                 <% int counter = 1; %>
                 <% for (Remision remision : remisionesPaciente) { %>
                 <% if (remision.isRealizada()) {%>
+                <% sinResultados = false;%>
                 <div class="card text-white bg-danger mb-3">
                     <div class="card-header">Remisión N° <%= counter%></div>
                     <%
@@ -136,6 +140,9 @@
                     %>
 
                 </div>
+                <% } %>
+                <% if (sinResultados) { %>
+                <h4 class="text-danger">SIN RESULTADOS</h4>
                 <% } %>
                 <% }%>
             </div>

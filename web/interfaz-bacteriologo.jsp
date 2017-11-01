@@ -37,12 +37,14 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="index.jsp">Sistema gestión de remisiones</a>
         </nav>
 
         <% if (remisiones != null) { %>
         <br>
         <div class="container">
+            <h2 class="text-center">REMISIONES POR REGISTRAR</h2>
+            <br>
             <div class="row">
                 <% for (Remision remision : remisiones) { %>
                 <% if (!remision.isRealizada()) { %>
@@ -54,7 +56,7 @@
                             <h4 class="card-title"><%= paciente.getNombres() + " " + paciente.getApellidos()%></h4>
                             <%  } %>
                             <% }%>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Fecha remisión: <%= remision.getFecha() %></p>
                             <a href="registro-parametros.jsp?remision=<%= remision.getId()%>" class="btn btn-primary bg-danger">Seleccionar remisión</a>
                         </div>
                     </div>
