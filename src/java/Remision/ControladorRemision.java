@@ -57,26 +57,29 @@ public class ControladorRemision extends HttpServlet {
             List<Examen> examenes = new ModeloExamen().obtenerExamenesDB();
             List<Examen> examenesRemision = new ArrayList<>();
 
-            int contador = 1;
+            String valor = request.getParameter("examen");
+            request.setAttribute("examen", valor);
+            
+            /*int contador = 1;
             for (Examen examen : examenes) {
                 String valor = request.getParameter("examen" + String.valueOf(contador));
                 if (valor != null) {
                     if (examen.getId() == Integer.parseInt(request.getParameter("examen" + String.valueOf(contador)))) {
-                        examenesRemision.add((examen));
+                        examenesRemision.add(examen);
                     }
                 }
                 contador++;
-            }
+            }*/
             
-            for(Examen examen: examenesRemision){
+            /*for(Examen examen: examenesRemision){
                 request.setAttribute("examen" + String.valueOf(contador), examen.getId());
-            }
+            }*/
             int idPaciente = Integer.parseInt(request.getParameter("paciente"));
             ModeloMedico modeloMedico = new ModeloMedico();
             List<Medico> medicos = modeloMedico.obtenerMedicosDB();
             Medico medico = new ControladorMedico().obtenerMedicoCookie(medicos, request);
             Date fecha = Date.valueOf(LocalDate.now());
-            Remision remision = new Remision(idPaciente, medico.getId(), fecha);
+            Remision remision = new Remision(idPaciente, medico.getId(), fecha, false);
             modeloRemision.agregarRemisionDB(remision);
             request.setAttribute("remision", SentenciasSQL.obtenerUltimoIdGenerado("remision"));
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("ControladorRemision_Examen");

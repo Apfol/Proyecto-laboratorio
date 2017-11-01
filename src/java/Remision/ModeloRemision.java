@@ -31,14 +31,15 @@ public class ModeloRemision {
 
         //Crear sentencia SQL y statement
         String sentenciaSQL = "INSERT INTO remision "
-                + "(id_paciente,fecha,id_medico)"
-                + " VALUES (?,?,?)";
+                + "(id_paciente,fecha,id_medico, realizada)"
+                + " VALUES (?,?,?,?)";
         preparedStatement = connection.prepareStatement(sentenciaSQL);
 
         //Pasar valores del objeto cliente a la sentenciaSQL
         preparedStatement.setInt(1, remision.getIdPaciente());
         preparedStatement.setDate(2, remision.getFecha());
         preparedStatement.setInt(3, remision.getIdMedico());
+        preparedStatement.setBoolean(4, remision.isRealizada());
 
         preparedStatement.execute();
     }
@@ -67,10 +68,25 @@ public class ModeloRemision {
             int idPaciente = resultSet.getInt("id_paciente");
             int idMedico = resultSet.getInt("id_medico");
             Date fecha = resultSet.getDate("fecha");
+            boolean realizada = resultSet.getBoolean("realizada");
 
-            remisiones.add(new Remision(id, idPaciente, idMedico, fecha));
+            remisiones.add(new Remision(id, idPaciente, idMedico, fecha, realizada));
 
         }
         return remisiones;
+    }
+
+    public void actualizarRemisionDB(int idRemision, boolean reailzada) throws SQLException {
+        Connection connection;
+        PreparedStatement preparedStatement;
+
+        //Establecer la conexión
+        connection = ConexionDB.conectar();
+
+        String sentenciaNombre = "UPDATE remision SET realizada=? WHERE id_remision=?";
+        preparedStatement = connection.prepareStatement(sentenciaNombre);
+        preparedStatement.setBoolean(1, reailzada);
+        preparedStatement.setInt(2, idRemision);
+        preparedStatement.executeUpdate();
     }
 }

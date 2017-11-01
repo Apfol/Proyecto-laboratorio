@@ -31,8 +31,8 @@ public class ModeloMedico {
 
         //Crear sentencia SQL y statement
         String sentenciaSQL = "INSERT INTO medico "
-                + "(nombres,apellidos,usuario,contraseña,telefono,identificacion,registros,id_ciudad,id_genero)"
-                + " VALUES (?,?,?,?,?,?,?,?,?)";
+                + "(nombres,apellidos,usuario,contraseña,telefono,identificacion,id_ciudad,id_genero)"
+                + " VALUES (?,?,?,?,?,?,?,?)";
         preparedStatement = connection.prepareStatement(sentenciaSQL);
 
         //Pasar valores del objeto cliente a la sentenciaSQL
@@ -42,9 +42,8 @@ public class ModeloMedico {
         preparedStatement.setString(4, medico.getContraseña());
         preparedStatement.setLong(5, medico.getTelefono());
         preparedStatement.setLong(6, medico.getIdentificacion());
-        preparedStatement.setInt(7, medico.getRegistros());
-        preparedStatement.setInt(8, medico.getIdCiudad());
-        preparedStatement.setInt(9, medico.getIdGenero());
+        preparedStatement.setInt(7, medico.getIdCiudad());
+        preparedStatement.setInt(8, medico.getIdGenero());
 
         preparedStatement.execute();
     }
@@ -76,11 +75,10 @@ public class ModeloMedico {
             long telefono = resultSet.getLong("telefono");
             String usuario = resultSet.getString("usuario");
             String contraseña = resultSet.getString("contraseña");
-            int registros = resultSet.getInt("registros");
             int idCiudad = resultSet.getInt("id_ciudad");
             int idGenero = resultSet.getInt("id_genero");
 
-            medicos.add(new Medico(id, nombres, apellidos, usuario, contraseña, telefono, identificacion, registros, idCiudad, idGenero));
+            medicos.add(new Medico(id, nombres, apellidos, usuario, contraseña, telefono, identificacion, idCiudad, idGenero));
 
         }
         return medicos;

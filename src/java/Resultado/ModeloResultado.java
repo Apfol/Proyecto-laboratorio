@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Remision_Examen;
+package Resultado;
 
 import Conexion.ConexionDB;
-import Remision.Remision;
+import Medico.Medico;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,9 +20,9 @@ import java.util.List;
  *
  * @author Andres Ramos
  */
-public class ModeloRemision_Examen {
-    
-    public void agregarRemisionExamenDB(Remision_Examen remision_examen) throws SQLException {
+public class ModeloResultado {
+
+    public void agregarResultadoDB(Resultado resultado) throws SQLException {
 
         Connection connection;
         PreparedStatement preparedStatement;
@@ -31,21 +31,24 @@ public class ModeloRemision_Examen {
         connection = ConexionDB.conectar();
 
         //Crear sentencia SQL y statement
-        String sentenciaSQL = "INSERT INTO remision_examen "
-                + "(id_remision,id_examen)"
-                + " VALUES (?,?)";
+        String sentenciaSQL = "INSERT INTO resultado "
+                + "(id_paciente,id_bacteriologa,id_parametro,fecha,valor)"
+                + " VALUES (?,?,?,?,?)";
         preparedStatement = connection.prepareStatement(sentenciaSQL);
 
         //Pasar valores del objeto cliente a la sentenciaSQL
-        preparedStatement.setInt(1, remision_examen.getIdRemision());
-        preparedStatement.setInt(2, remision_examen.getIdExamen());
+        preparedStatement.setInt(1, resultado.getIdPaciente());
+        preparedStatement.setInt(2, resultado.getIdBacteriologa());
+        preparedStatement.setInt(3, resultado.getIdParametro());
+        preparedStatement.setDate(4, resultado.getFechaRealizacion());
+        preparedStatement.setString(5, resultado.getValor());
 
         preparedStatement.execute();
     }
     
-    public List<Remision_Examen> obtenerRemisionesExamenesDB() throws Exception {
+    public List<Resultado> obtenerResultadosDB() throws Exception {
 
-        List<Remision_Examen> remisionesExamenes = new ArrayList<>();
+        List<Resultado> resultados = new ArrayList<>();
 
         Connection connection;
         Statement statement;
@@ -55,7 +58,7 @@ public class ModeloRemision_Examen {
         connection = ConexionDB.conectar();
 
         //Crear sentencia SQL y statement
-        String sentenciaSQL = "SELECT * FROM remision_examen";
+        String sentenciaSQL = "SELECT * FROM resultado";
         statement = connection.createStatement();
 
         //Ejecutar SQL y guardar valores de consulta en resultSet
@@ -63,12 +66,16 @@ public class ModeloRemision_Examen {
 
         //Recorrer resultador de la sentencia
         while (resultSet.next()) {
-            int idRemision = resultSet.getInt("id_remision");
-            int idExamen = resultSet.getInt("id_examen");
-
-            remisionesExamenes.add(new Remision_Examen(idRemision, idExamen));
+            int id = resultSet.getInt("id_resultado");
+            int idPaciente = resultSet.getInt("id_paciente");
+            int idBacteriologa = resultSet.getInt("id_bacteriologa");
+            int idParametro = resultSet.getInt("id_parametro");
+            Date fecha = resultSet.getDate("fecha");
+            String valor = resultSet.getString("valor");
+            
+            resultados.add(new Resultado(id, idPaciente, idBacteriologa, idParametro, fecha, valor));
 
         }
-        return remisionesExamenes;
+        return resultados;
     }
 }

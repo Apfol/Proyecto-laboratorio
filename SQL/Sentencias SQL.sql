@@ -23,7 +23,8 @@ create table remision(
     id_remision int(11) primary key auto_increment,
     id_paciente int(11) not null,
     fecha date not null,
-    id_medico int(11) not null
+    id_medico int(11) not null,
+    realizada boolean not null
 );
 
 create table medico(
@@ -34,7 +35,6 @@ create table medico(
     contraseña varchar(100) not null,
     telefono bigint(10) not null,
     identificacion bigint(10) not null,
-    registros int(11) not null,
     id_ciudad int(11) not null,
     id_genero int(11) not null
 );
@@ -81,7 +81,10 @@ create table parametro(
 create table resultado(
     id_resultado int(11) primary key auto_increment,
     id_paciente int(11) not null,
-    id_parametro int(11) not null
+    id_bacteriologa int(11) not null,
+    id_parametro int(11) not null,
+    fecha date not null,
+    valor varchar(100) not null
 );
 
 create table genero(
@@ -97,14 +100,15 @@ alter table remision_examen add constraint remision_examen foreign key(id_remisi
 alter table remision_examen add constraint examen_remision foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
 alter table parametro add constraint parametro_examen foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
 alter table resultado add constraint resultado_paciente foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
+alter table resultado add constraint resultado_bacteriologa foreign key(id_bacteriologa) references bacteriologa(id_bacteriologa) ON DELETE CASCADE;
 alter table resultado add constraint resultado_parametro foreign key(id_parametro) references parametro(id_parametro) ON DELETE CASCADE;
 alter table medico add constraint medico_ciudad foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
 alter table medico add constraint medico_genero foreign key(id_genero) references genero(id_genero) ON DELETE CASCADE;
 
 --Bacteriologa;
 
-insert into bacteriologa(nombres, apellidos) values ('Camila', 'Garzón Calle');
-insert into bacteriologa(nombres, apellidos) values ('Andrea ', 'Cruz Ávila');
+insert into bacteriologa(nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Camila', 'Garzón Calle', 'camilaga', 'camilaga', 3214567824, 10765243567, 20, 2);
+insert into bacteriologa(nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Andrea ', 'Cruz Ávila', 'andreacr', 'andreacr', 3145261789, 1034526718, 11, 2);
 
 --Ciudad;
 
@@ -162,12 +166,12 @@ insert into laboratorio (nit, nombre) values ('492.231.873 - 2', 'Laboratorio M�
 
 --medico;
 
-insert into medico (nombres, apellidos) values ('Andrés Camilo', 'Rodriguez Farfán'); 
-insert into medico (nombres, apellidos) values ('Michael', 'Sierra Wern');
-insert into medico (nombres, apellidos) values ('Juana', 'Uribe Merchán');
-insert into medico (nombres, apellidos) values ('Mónica Paola', 'Peña Castillo');
-insert into medico (nombres, apellidos) values ('Charles', 'Truman Sang');
-insert into medico (nombres, apellidos) values ('Sergio Andrés', 'Ortega Murcia');
+insert into medico (nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Andrés Camilo', 'Rodriguez Farfán', 'andresro', 'andresro', 3214567081, 105674345, 24, 1); 
+insert into medico (nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Michael', 'Sierra Wern', 'michaelsi', 'michaelsi', 3216748239, 10345678829, 20, 1);
+insert into medico (nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Juana', 'Uribe Merchán', 'juanaur', 'juanaur', 3124536789, 10245647890, 11, 2);
+insert into medico (nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Mónica Paola', 'Peña Castillo', 'monicapa', 'monicapa', 3145267890, 10345672839, 1, 2);
+insert into medico (nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Charles', 'Truman Sang', 'charlestr', 'charlestr', 3116758329, 10345672345, 13, 3);
+insert into medico (nombres, apellidos, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Sergio Andrés', 'Ortega Murcia', 'sergioan', 'sergian', 3145267890, 10245672430, 8, 1);
 
 --paciente;
 
@@ -175,12 +179,12 @@ insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telef
 insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Carmen Isabella', 'Garzón Pineda', 'AV 52#12- 42', 'carmenis', 'carmenis', 3156854432, 1023426785, 14, 2);
 insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Sandra Elvira', 'Sánchez Moreno', 'Cll 12#37 B-3', 'sandrael', 'sandrael', 3124325672, 1045672914, 22, 2);
 insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Pedro', 'Perdomo Grisales', 'Krr 43#83 D-21', 'pedroper', 'pedroper', 3146273190, 10223256711, 2, 1);
-insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero)) values ('Juan David','Gómez Avella', 'Krr 2#32-54', 'juango', 'juango', 3145266579, 10, 1);
-insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María José', 'Santís Celis', 'AV 15-52#2B', 'mariasa', 'mariasa', 3124325567, 14, 2);
-insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Donald', 'Santos  Maduro', 'Cll 60# 32B sur', 'donaldsa', 'donaldsa', 3124567182, 20, 3);
-insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Álvaro', 'Pinilla Rojas ', 'Cll 13#21 53- D', 'alvaropi', 'alvaropi', 3214567118, 21, 1);
-insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Laura Vanessa', 'Poveda Osorio', 'Krr 21#52 22E', 'laurapo', 'laurapo', 3154278954, 27, 2);
-insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María Juliana', 'Cárdenas García', 'Cll 32#84 30Norte', 'mariaca', 'mariaca', 3145637860, 19, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Juan David','Gómez Avella', 'Krr 2#32-54', 'juango', 'juango', 3145266579, 10140567835, 10, 1);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María José', 'Santís Celis', 'AV 15-52#2B', 'mariasa', 'mariasa', 3124325567, 10345627890, 14, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Donald', 'Santos  Maduro', 'Cll 60# 32B sur', 'donaldsa', 'donaldsa', 3124567182, 52161683, 20, 3);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Álvaro', 'Pinilla Rojas ', 'Cll 13#21 53- D', 'alvaropi', 'alvaropi', 3214567118, 10223567718, 21, 1);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('Laura Vanessa', 'Poveda Osorio', 'Krr 21#52 22E', 'laurapo', 'laurapo', 3154278954, 11034567821, 27, 2);
+insert into paciente (nombres, apellidos, direccion, usuario, contraseña, telefono, identificacion, id_ciudad, id_genero) values ('María Juliana', 'Cárdenas García', 'Cll 32#84 30Norte', 'mariaca', 'mariaca', 3145637860, 10247893345, 19, 2);
 
 --parametro;
 
@@ -199,16 +203,16 @@ insert into parametro (id_examen, valor_minimo, valor_maximo, nombre, descripcio
 
 --remision; 
 
-insert into remision (id_paciente, fecha, id_medico) values (1, '2016-03-02', 1);
-insert into remision (id_paciente, fecha, id_medico) values (2, '2016-08-12', 3);
-insert into remision (id_paciente, fecha, id_medico) values (3, '2017-02-22', 2);
-insert into remision (id_paciente, fecha, id_medico) values (4, '2017-03-02', 4);
-insert into remision (id_paciente, fecha, id_medico) values (5, '2017-05-12', 6);
-insert into remision (id_paciente, fecha, id_medico) values (6, '2017-06-02', 5);
-insert into remision (id_paciente, fecha, id_medico) values (7, '2017-07-30', 1);
-insert into remision (id_paciente, fecha, id_medico) values (8, '2017-09-11', 2);
-insert into remision (id_paciente, fecha, id_medico) values (9, '2017-10-01', 4);
-insert into remision (id_paciente, fecha, id_medico) values (10, '2017-12-04',6);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (1, '2016-03-02', 1, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (2, '2016-08-12', 3, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (3, '2017-02-22', 2, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (4, '2017-03-02', 4, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (5, '2017-05-12', 6, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (6, '2017-06-02', 5, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (7, '2017-07-30', 1, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (8, '2017-09-11', 2, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (9, '2017-10-01', 4, false);
+insert into remision (id_paciente, fecha, id_medico, realizada) values (10, '2017-12-04',6, false);
 
 --remision_ examen;
 

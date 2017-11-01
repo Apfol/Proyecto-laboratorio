@@ -5,10 +5,9 @@
  */
 package Bacteriologo;
 
+import Cookies.ControladorCookie;
 import Medico.ControladorMedico;
-import Medico.Medico;
 import Sentencias.SentenciasSQL;
-import com.mallbit.cookies.ControladorCookie;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

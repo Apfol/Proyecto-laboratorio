@@ -36,8 +36,9 @@ public class ControladorRemision_Examen extends HttpServlet {
         try {
             List<Examen> examenes = new ModeloExamen().obtenerExamenesDB();
             List<Examen> examenesRemision = new ArrayList<>();
+            String valor = req.getParameter("examen");
 
-            int contador = 1;
+            /*int contador = 1;
             for (Examen examen : examenes) {
                 String valor = req.getParameter("examen" + String.valueOf(contador));
                 if (valor != null) {
@@ -46,9 +47,8 @@ public class ControladorRemision_Examen extends HttpServlet {
                     }
                 }
                 contador++;
-            }
-
-            insertarRemisionExamen(req, resp, examenesRemision);
+            }*/
+            insertarRemisionExamen(req, resp, valor);
         } catch (Exception ex) {
             Logger.getLogger(ControladorRemision_Examen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,8 +59,9 @@ public class ControladorRemision_Examen extends HttpServlet {
         try {
             List<Examen> examenes = new ModeloExamen().obtenerExamenesDB();
             List<Examen> examenesRemision = new ArrayList<>();
+            String valor = req.getParameter("examen");
 
-            int contador = 1;
+            /*int contador = 1;
             for (Examen examen : examenes) {
                 String valor = req.getParameter("examen" + String.valueOf(contador));
                 if (valor != null) {
@@ -69,28 +70,27 @@ public class ControladorRemision_Examen extends HttpServlet {
                     }
                 }
                 contador++;
-            }
-            insertarRemisionExamen(req, resp, examenesRemision);
+            }*/
+            insertarRemisionExamen(req, resp, valor);
         } catch (Exception ex) {
             Logger.getLogger(ControladorRemision_Examen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
 
-    private void insertarRemisionExamen(HttpServletRequest request, HttpServletResponse response, List<Examen> examenes) throws Exception {
+    private void insertarRemisionExamen(HttpServletRequest request, HttpServletResponse response, String idExamen) throws Exception {
 
         try {
-            for (Examen examen : examenes) {
+            int idRemision = Integer.parseInt(request.getAttribute("remision").toString());
+            Remision_Examen remision_examen = new Remision_Examen(idRemision, Integer.parseInt(idExamen));
+            modeloRemision_Examen.agregarRemisionExamenDB(remision_examen);
+            /*for (Examen examen : examenes) {
 
                 int idExamen = examen.getId();
                 int idRemision = Integer.parseInt(request.getAttribute("remision").toString());
 
                 Remision_Examen remision_examen = new Remision_Examen(idRemision, idExamen);
                 modeloRemision_Examen.agregarRemisionExamenDB(remision_examen);
-            }
+            }*/
             response.sendRedirect("interfaz-medico.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);

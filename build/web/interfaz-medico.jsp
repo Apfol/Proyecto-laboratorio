@@ -48,7 +48,7 @@
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"><%= examen.getNombre()%></h5>
                                     <div class="checkbox">
-                                        <label><input type="checkbox" name="examen<%= examen.getId() %>" value="<%= examen.getId() %>"></label>
+                                        <label><input type="radio" name="examen" value="<%= examen.getId() %>"></label>
                                     </div>
                                 </div>
                                 <p class="mb-1"><%= examen.getDescripcion()%></p>

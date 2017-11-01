@@ -5,8 +5,8 @@
  */
 package Medico;
 
+import Cookies.ControladorCookie;
 import Sentencias.SentenciasSQL;
-import com.mallbit.cookies.ControladorCookie;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -51,11 +51,10 @@ public class ControladorMedico extends HttpServlet {
             String contraseña = request.getParameter("password");
             long telefono = Long.parseLong(request.getParameter("telefono"));
             long identificacion = Long.parseLong(request.getParameter("identificacion"));
-            int registros = Integer.parseInt(request.getParameter("registros"));
             int idCiudad = Integer.parseInt(request.getParameter("ciudad"));
             int idGenero = Integer.parseInt(request.getParameter("genero"));
 
-            Medico medico = new Medico(nombres, apellidos, usuario, contraseña, telefono, identificacion, registros, idCiudad, idGenero);
+            Medico medico = new Medico(nombres, apellidos, usuario, contraseña, telefono, identificacion, idCiudad, idGenero);
             modeloMedico.agregarMedicoDB(medico);
             ControladorCookie.crearCookie(SentenciasSQL.obtenerUltimoIdGenerado("medico"), Medico.MEDICO_COOKIE, response);
             response.sendRedirect("interfaz-medico.jsp");

@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/interfaz-medico.jsp</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Paciente/ControladorPaciente.java</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Paciente/Paciente.java</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Examen/ModeloExamen.java</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/index.jsp</file>
+            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Medico/ModeloMedico.java</file>
+            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/registro-parametros.jsp</file>
+            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Resultado/ControladorResultado.java</file>
+            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/WEB-INF/glassfish-web.xml</file>
         </group>
     </open-files>
 </project-private>

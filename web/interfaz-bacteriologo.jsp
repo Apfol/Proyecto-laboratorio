@@ -45,19 +45,21 @@
         <div class="container">
             <div class="row">
                 <% for (Remision remision : remisiones) { %>
-                <div class="col-sm-4">
+                <% if (!remision.isRealizada()) { %>
+                <div class="col-sm-6">
                     <div class="card text-white bg-info mb-3">
-
                         <div class="card-body">
                             <% for (Paciente paciente : pacientes) { %>
                             <%  if (paciente.getId() == remision.getIdPaciente()) {%>
                             <h4 class="card-title"><%= paciente.getNombres() + " " + paciente.getApellidos()%></h4>
                             <%  } %>
-                            <% } %>
+                            <% }%>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="registro-parametros.jsp?remision=<%= remision.getId()%>" class="btn btn-primary bg-danger">Seleccionar remisión</a>
                         </div>
                     </div>
                 </div>
+                <% } %>
                 <% } %>
             </div>
         </div>

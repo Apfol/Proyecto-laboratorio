@@ -102,13 +102,9 @@
                                 <input type="number" name="identificacion" class="form-control" id="identificacion" placeholder="Identificación">
                             </div>
                             <% if (usuario == Usuario.MEDICO) { %>
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-4">
                                 <label for="telefono">Teléfono</label>
                                 <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Teléfono">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="registros">N° registros</label>
-                                <input type="number" name="registros" class="form-control" id="registros" placeholder="N° registros">
                             </div>
                             <% } else if (usuario == Usuario.PACIENTE) { %>
                             <div class="form-group col-md-2">

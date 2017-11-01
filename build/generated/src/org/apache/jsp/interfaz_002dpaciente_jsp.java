@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class interfaz_002dbacteriologo_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class interfaz_002dpaciente_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,31 +45,34 @@ public final class interfaz_002dbacteriologo_jsp extends org.apache.jasper.runti
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
+      out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        <title>Interfaz paciente</title>\n");
       out.write("        <!-- Bootstrap CSS -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/bootstrap.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/bootstrap-grid.css\" type=\"text/css\"/>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Hello World!</h1>\n");
-      out.write("        <div class=\"card text-white bg-info mb-3\" style=\"max-width: 20rem;\">\n");
+      out.write("\n");
+      out.write("        <h1>Resultados examenes</h1>\n");
+      out.write("\n");
+      out.write("        <div class=\"card text-white bg-success mb-3\" style=\"max-width: 20rem;\">\n");
       out.write("            <div class=\"card-header\">Header</div>\n");
       out.write("            <div class=\"card-body\">\n");
-      out.write("                <h4 class=\"card-title\">Info card title</h4>\n");
+      out.write("                <h4 class=\"card-title\">Success card title</h4>\n");
       out.write("                <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("        <!-- Optional JavaScript -->\n");
       out.write("        <!-- jQuery first, then Popper.js, then Bootstrap JS -->\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\"></script>\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js\"></script>\n");
       out.write("        <script src=\"js/bootstrap.min.js\"></script>\n");
       out.write("    </body>\n");
-      out.write("\n");
-      out.write("\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

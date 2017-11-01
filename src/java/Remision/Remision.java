@@ -19,18 +19,21 @@ public class Remision {
     private int idPaciente;
     private int idMedico;
     private Date fecha;
+    private boolean realizada;
 
-    public Remision(int idRemision, int idPaciente, int idMedico, Date fecha) {
-        this.id = idRemision;
+    public Remision(int id, int idPaciente, int idMedico, Date fecha, boolean realizada) {
+        this.id = id;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
         this.fecha = fecha;
+        this.realizada = realizada;
     }
 
-    public Remision(int idPaciente, int idMedico, Date fecha) {
+    public Remision(int idPaciente, int idMedico, Date fecha, boolean realizada) {
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
         this.fecha = fecha;
+        this.realizada = realizada;
     }
 
     public int getId() {
@@ -63,6 +66,14 @@ public class Remision {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public boolean isRealizada() {
+        return realizada;
+    }
+
+    public void setRealizada(boolean realizada) {
+        this.realizada = realizada;
     }
     
     

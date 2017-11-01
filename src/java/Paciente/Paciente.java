@@ -11,6 +11,8 @@ package Paciente;
  */
 public class Paciente {
     
+    public static final String PACIENTE_COOKIE = "paciente";
+    
     private int id;
     private String nombres;
     private String apellidos;

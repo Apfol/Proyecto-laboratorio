@@ -20,11 +20,10 @@ public class Medico {
     private String contraseña;
     private Long telefono;
     private Long identificacion;
-    private int registros;
     private int idCiudad;
     private int idGenero;
 
-    public Medico(int id, String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int registros, int idCiudad, int idGenero) {
+    public Medico(int id, String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int idCiudad, int idGenero) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -32,19 +31,17 @@ public class Medico {
         this.contraseña = contraseña;
         this.telefono = telefono;
         this.identificacion = identificacion;
-        this.registros = registros;
         this.idCiudad = idCiudad;
         this.idGenero = idGenero;
     }
 
-    public Medico(String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int registros, int idCiudad, int idGenero) {
+    public Medico(String nombres, String apellidos, String usuario, String contraseña, Long telefono, Long identificacion, int idCiudad, int idGenero) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.telefono = telefono;
         this.identificacion = identificacion;
-        this.registros = registros;
         this.idCiudad = idCiudad;
         this.idGenero = idGenero;
     }
@@ -104,15 +101,7 @@ public class Medico {
     public void setIdentificacion(Long identificacion) {
         this.identificacion = identificacion;
     }
-
-    public int getRegistros() {
-        return registros;
-    }
-
-    public void setRegistros(int registros) {
-        this.registros = registros;
-    }
-
+    
     public int getIdCiudad() {
         return idCiudad;
     }

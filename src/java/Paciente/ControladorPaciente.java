@@ -5,8 +5,9 @@
  */
 package Paciente;
 
+import Cookies.ControladorCookie;
 import Medico.ControladorMedico;
-import Medico.Medico;
+import Sentencias.SentenciasSQL;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,7 +58,8 @@ public class ControladorPaciente extends HttpServlet {
 
             Paciente paciente = new Paciente(nombres, apellidos, usuario, contraseña, direccion, telefono, identificacion, idCiudad, idGenero);
             modeloPaciente.agregarPacienteDB(paciente);
-            response.sendRedirect("index.jsp");
+            ControladorCookie.crearCookie(SentenciasSQL.obtenerUltimoIdGenerado("paciente"), Paciente.PACIENTE_COOKIE, response);
+            response.sendRedirect("interfaz-paciente.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,6 +73,7 @@ public class ControladorPaciente extends HttpServlet {
             List<Paciente> pacientes = modeloPaciente.obtenerPacientesDB();
             for (Paciente paciente : pacientes) {
                 if (usuario.equals(paciente.getUsuario()) && contraseña.equals(paciente.getContraseña())) {
+                    ControladorCookie.crearCookie(paciente.getId(), Paciente.PACIENTE_COOKIE, response);
                     response.sendRedirect("interfaz-paciente.jsp");
                 }
             }
@@ -78,5 +82,20 @@ public class ControladorPaciente extends HttpServlet {
             Logger.getLogger(ControladorMedico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    public Paciente obtenerPacienteCookie(List<Paciente> pacientes, HttpServletRequest request) {
+        Paciente paciente = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(Paciente.PACIENTE_COOKIE)) {
+                for (Paciente pac : pacientes) {
+                    if (pac.getId() == Integer.parseInt(cookie.getValue())) {
+                        paciente = pac;
+                        break;
+                    }
+                }
+            }
+        }
+        return paciente;
+    }
 }
