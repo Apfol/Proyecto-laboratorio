@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/interfaz-paciente.jsp</url>
+            <bookmark id="1">
+                <name/>
+                <line>178</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Medico/ModeloMedico.java</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/registro-parametros.jsp</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Resultado/ControladorResultado.java</file>
-            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/WEB-INF/glassfish-web.xml</file>
+            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/web/interfaz-paciente.jsp</file>
+            <file>file:/C:/Users/Andres%20Ramos/Documents/GitHub/Proyecto%20laboratorio/src/java/Conexion/ConexionDB.java</file>
         </group>
     </open-files>
 </project-private>

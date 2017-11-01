@@ -93,17 +93,17 @@ create table genero(
 );
 
 --Relación llaves foráneas;
-alter table paciente add constraint paciente_ciudad foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
-alter table remision add constraint remision_paciente foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
-alter table remision add constraint remision_medico foreign key(id_medico) references medico(id_medico) ON DELETE CASCADE;
-alter table remision_examen add constraint remision_examen foreign key(id_remision) references remision(id_remision) ON DELETE CASCADE;
-alter table remision_examen add constraint examen_remision foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
-alter table parametro add constraint parametro_examen foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
-alter table resultado add constraint resultado_paciente foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
-alter table resultado add constraint resultado_bacteriologa foreign key(id_bacteriologa) references bacteriologa(id_bacteriologa) ON DELETE CASCADE;
-alter table resultado add constraint resultado_parametro foreign key(id_parametro) references parametro(id_parametro) ON DELETE CASCADE;
-alter table medico add constraint medico_ciudad foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
-alter table medico add constraint medico_genero foreign key(id_genero) references genero(id_genero) ON DELETE CASCADE;
+alter table paciente add foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
+alter table remision add foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
+alter table remision add foreign key(id_medico) references medico(id_medico) ON DELETE CASCADE;
+alter table remision_examen add foreign key(id_remision) references remision(id_remision) ON DELETE CASCADE;
+alter table remision_examen add foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
+alter table parametro add foreign key(id_examen) references examen(id_examen) ON DELETE CASCADE;
+alter table resultado add foreign key(id_paciente) references paciente(id_paciente) ON DELETE CASCADE;
+alter table resultado add foreign key(id_bacteriologa) references bacteriologa(id_bacteriologa) ON DELETE CASCADE;
+alter table resultado add foreign key(id_parametro) references parametro(id_parametro) ON DELETE CASCADE;
+alter table medico add foreign key(id_ciudad) references ciudad(id_ciudad) ON DELETE CASCADE;
+alter table medico add foreign key(id_genero) references genero(id_genero) ON DELETE CASCADE;
 
 --Bacteriologa;
 
@@ -241,16 +241,6 @@ insert into remision_examen (id_remision, id_examen) values (10,8);
 
 --resultado;
 
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (1, 1, 1, '2017-12-04', '14.6');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (2, 2, 11, '2016-05-10', '0.7');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (3, 2, 3, '2014-12-10', '0.9');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (4, 1, 4, '2017-3-14', '0.30');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (5, 2, 5, '2015-4-29', '470');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (6, 1, 6, '2013-03-03', '101');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (7, 1, 11, '2014-08-08', '0.4');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (8, 1, 6, '2012-04-09', '1.3');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (9, 2, 9, '2010-04-20', '4.0');
-insert into resultado (id_paciente, id_bacteriologa, id_parametro, fecha, valor) values (10, 2, 10, '1017-03-03', 'Ausencia alta de patógenos');
 
 --Insert Generos;
 INSERT INTO genero(tipoGenero) VALUES
